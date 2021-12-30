@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 def news_home(request):
     data = {
         'title': 'News page',
