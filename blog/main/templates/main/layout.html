@@ -11,15 +11,7 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 </head>
 <body>
-    <aside>
-        <img src="{% static 'main/img/logo.png' %}" alt="logo">
-        <h3>Navigation</h3>
-        <ul>
-            <a href="{% url 'home' %}"><li><i class="fas fa-home"></i> Main page</li></a>
-            <a href="{% url 'about' %}"><li><i class="fas fa-question-circle"></i> About</li></a>
-            <a href=""><li><i class="fas fa-envelope-open-text"></i> Contacts</li></a>
-        </ul>
-    </aside>
+    {% include 'main/nav.html' %}
     <main>
         {% block content %}
         {% endblock %}

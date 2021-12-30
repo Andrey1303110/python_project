@@ -4,4 +4,4 @@ def news_home(request):
     data = {
         'title': 'News page',
     }
-    return render(request, 'main/about.html', data)
+    return render(request, 'news/news_home.html', data)
