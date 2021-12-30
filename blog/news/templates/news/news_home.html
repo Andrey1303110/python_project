@@ -5,7 +5,14 @@
 {% block content %}
     <div class="features">
         <h1>{{ title }}</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur corporis deserunt dolore dolorem error modi possimus quasi rerum. Accusantium consequatur dicta doloribus perferendis qui tempore ullam? Cum, enim, neque.</p>
-        <button class="btn btn-success">Go to Main page</button>
+        {% for new in news %}
+            <div class="alert alert-warning">
+                <h3>{{new.title}}</h3>
+                <p>{{new.anons}}</p>
+                <img src="../{{new.image}}" alt="">
+                <p>{{new.full_text}}</p>
+                <p>{{new.date}}</p>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
