@@ -36,6 +36,11 @@ class NewsDeleteView(DeleteView):
     template_name = 'news/news_delete.html'
     context_object_name = 'article'
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['title'] = 'Удаление записи'
+        return data
+
 
 def create(request):
     error = ''
