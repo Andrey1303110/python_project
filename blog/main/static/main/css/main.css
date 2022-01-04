@@ -60,7 +60,7 @@ aside .btn {
 
 main .features {
     padding-left: 21.5%;
-    padding-top: 100px;
+    padding-top: 50px;
     color: white;
     text-align: center;
     width: 100%;
@@ -80,6 +80,10 @@ main .features p {
 
 .features img {
     width: 500px;
+}
+
+.btn {
+    margin: 1em auto;
 }
 
 .alert-warning {
