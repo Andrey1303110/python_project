@@ -27,6 +27,7 @@ class NewsUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['title'] = 'Редактирование записи'
+        data['button_text'] = 'Обновить запись'
         return data
 
 
@@ -56,6 +57,7 @@ def create(request):
     data = {
         'form': form,
         'error': error,
-        'title': 'Форма по добавлению статьи'
+        'title': 'Форма по добавлению статьи',
+        'button_text': 'Добавить запись'
     }
     return render(request, 'news/create.html', data)
