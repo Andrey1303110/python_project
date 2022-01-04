@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Articles
 from .forms import ArticlesForm
+from django.views.generic import DetailView
 
 
 def news_home(request):
@@ -9,6 +10,12 @@ def news_home(request):
         'news': Articles.objects.order_by('-date')
     }
     return render(request, 'news/news_home.html', data)
+
+
+class NewsDetailView(DetailView):
+    model = Articles
+    template_name = 'news/news_detail.html'
+    context_object_name = 'article'
 
 
 def create(request):

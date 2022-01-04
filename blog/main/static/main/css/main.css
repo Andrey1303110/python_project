@@ -54,6 +54,8 @@ aside ul a li:hover {
 
 aside .btn {
     color: white;
+    font-size: 25px;
+    margin-left: -12px;
 }
 
 main .features {
@@ -74,6 +76,10 @@ main .features h1 {
 main .features p {
     max-width: 400px;
     margin: 20px auto;
+}
+
+.features img {
+    width: 500px;
 }
 
 .alert-warning {

@@ -13,6 +13,7 @@
                     <img src="../{{new.image}}" alt="">
                     <p>{{new.full_text}}</p>
                     <p>{{new.date}}</p>
+                    <a href="{% url 'news_detail' new.id %}" class="btn btn-warning">Читать детальнее</a>
                 </div>
             {% endfor %}
         {% else %}
