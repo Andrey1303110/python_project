@@ -20,9 +20,14 @@ class NewsDetailView(DetailView):
 
 class NewsUpdateView(UpdateView):
     model = Articles
-    template_name = 'news/news_update.html'
+    template_name = 'news/create.html'
     context_object_name = 'article'
     form_class = ArticlesForm
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['title'] = 'Редактирование записи'
+        return data
 
 
 class NewsDeleteView(DeleteView):
