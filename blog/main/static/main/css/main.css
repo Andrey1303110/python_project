@@ -52,6 +52,10 @@ aside ul a li:hover {
     transform: scale(1.05);
 }
 
+aside .btn {
+    color: white;
+}
+
 main .features {
     padding-left: 21.5%;
     padding-top: 100px;
@@ -82,4 +86,12 @@ main .features p {
 
 .alert-warning img {
     width: 100%;
+}
+
+form {
+    width: 30%;
+    margin-top: 40px;
+}
+form input, form textarea {
+    margin-bottom: 20px;
 }
