@@ -19,9 +19,12 @@ class ArticlesForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Текст'
             }),
-            "date": DateTimeInput(attrs={
+            "date": DateTimeInput(
+                attrs={
                     'type': 'datetime-local',
                     'class': 'form-control',
                     'placeholder': 'Дата'
                 },
-                format='%m/%d/%Y %H:%M')},
+                format='%m/%d/%Y %H:%M',
+            )
+        }
