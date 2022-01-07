@@ -20,7 +20,6 @@ class ArticlesForm(ModelForm):
                 'placeholder': 'Текст'
             }),
             "date": DateTimeInput(attrs={
-                    'autocomplete': 'on',
                     'type': 'datetime-local',
                     'class': 'form-control',
                     'placeholder': 'Дата'
