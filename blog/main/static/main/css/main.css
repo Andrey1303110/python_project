@@ -12,6 +12,7 @@ aside {
     min-height: 100vh;
     color: #fff;
     border-right: 5px solid darkolivegreen;
+    z-index: 3;
 }
 
 aside img {
@@ -27,6 +28,7 @@ aside h3 {
 
 aside ul {
     list-style: none;
+    margin-top: 40px;
 }
 
 aside ul a {
@@ -94,14 +96,56 @@ main .features p {
     text-align: justify;
 }
 
+aside .alert-warning {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
 .alert-warning img {
     width: 100%;
 }
 
-form {
+.features form {
     width: 30%;
     margin-top: 40px;
 }
+
+form.login {
+    width: 50%;
+}
+
+form.login p {
+    display: flex;
+    justify-content: space-between;
+}
+
+form button {
+    width: 50%;
+    height: 35px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: darkseagreen;
+}
+
 form input, form textarea {
     margin-bottom: 20px;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background: #1c1a1a;
+    padding-right: 40px;
+    height: 50px;
+}
+
+.header span {
+    color: white;
+    margin-right: 20px;
 }

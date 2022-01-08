@@ -7,6 +7,8 @@
         <a href="{% url 'about' %}"><li><i class="fas fa-question-circle"></i> About</li></a>
         <a href="{% url 'news_home' %}"><li><i class="fas fa-rss-square"></i> News</li></a>
         <a href=""><li><i class="fas fa-envelope-open-text"></i> Contacts</li></a>
-        <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fa fa-plus-circle"></i> Add block</button></li></a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fa fa-plus-circle"></i> Add block</button></li></a>
+        {% endif %}
     </ul>
 </aside>

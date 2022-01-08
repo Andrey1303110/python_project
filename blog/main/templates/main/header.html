@@ -1,0 +1,10 @@
+{% load static %}
+<div class="header">
+    {% if user.is_authenticated %}
+        <span> Hi {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Press to LogOut</a>
+    {% else %}
+        <span>You are not logged in</span>
+        <a href="{% url 'login' %}">Press to LogIn</a>
+    {% endif %}
+</div>
