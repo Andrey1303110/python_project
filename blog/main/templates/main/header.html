@@ -2,9 +2,9 @@
 <div class="header">
     {% if user.is_authenticated %}
         <span> Hi {{ user.username }}!</span>
-        <a href="{% url 'logout' %}">Press to LogOut</a>
+        <button class="btn btn-warning login-form" data-link="{% url 'logout' %}">Press to LogOut</button>
     {% else %}
         <span>You are not logged in</span>
-        <a href="{% url 'login' %}">Press to LogIn</a>
+        <button class="btn btn-primary login-form" data-link="{% url 'login' %}">Press to LogIn</button>
     {% endif %}
 </div>

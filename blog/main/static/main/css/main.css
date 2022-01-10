@@ -149,3 +149,7 @@ form input, form textarea {
     color: white;
     margin-right: 20px;
 }
+
+.header button {
+    margin: 0;
+}
