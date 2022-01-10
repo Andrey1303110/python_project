@@ -1,1 +1,1 @@
-document.querySelector('.login-form').onclick = function () { location = this.dataset.link }
+document.querySelector('.header .login-form').onclick = function () { location = this.dataset.link }
