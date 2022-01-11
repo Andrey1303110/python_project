@@ -37,9 +37,10 @@ def register(request):
             messages.success(request, 'Вы успешно зарегистрировались!')
             return redirect('login')
         else:
-            form = UserCreationForm()
             messages.error(request, 'Ошибка регистрации!')
-
+            return redirect('register')
+    else:
+        form = UserCreationForm()
         data = {
             'title': 'Registration Page',
             'button_text': 'registration',
