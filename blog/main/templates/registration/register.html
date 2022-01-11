@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="features">
+        <form class="auth" method="post">
+            {% crispy form %}
+            <button type="submit">{{button_text}}</button>
+        </form>
+    </div>
+{% endblock %}

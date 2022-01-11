@@ -3,8 +3,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        <div class="features">
+    <div class="features">
         <h1>{{ title }}</h1>
         {% if news %}
             {% for new in news %}
@@ -21,5 +20,4 @@
             <p>У вас нет записей!</p>
         {% endif %}
     </div>
-    {% endif %}
 {% endblock %}

@@ -6,9 +6,9 @@ aside {
     position: fixed;
     float: left;
     background: #1c1a1a;
-    width: 21.5%;
-    padding: 2.5%;
-    padding-top: 3.5%;
+    width: 320px;
+    padding: 40px;
+    padding-top: 55px;
     min-height: 100vh;
     color: #fff;
     border-right: 5px solid darkolivegreen;
@@ -61,7 +61,7 @@ aside .btn {
 }
 
 main .features {
-    padding-left: 21.5%;
+    padding-left: 320px;
     padding-top: 50px;
     color: white;
     text-align: center;
@@ -111,21 +111,34 @@ aside .alert-warning {
     margin-top: 40px;
 }
 
-form.login {
-    width: 50%;
+#hint_id_password1 {
+    text-align: start;
 }
 
-form.login p {
-    display: flex;
-    justify-content: space-between;
-}
-
-form button {
-    width: 50%;
+button[type='submit'] {
+    width: 250px;
     height: 35px;
     text-transform: uppercase;
     font-weight: bold;
     background: darkseagreen;
+}
+
+form.auth {
+    width: 50%;
+}
+
+form.auth p {
+    display: flex;
+    justify-content: space-between;
+}
+
+form .form-group {
+    margin-bottom: 30px;
+}
+
+form .form-group div input {
+    width: 66.6%;
+    margin: 0 auto;
 }
 
 form input, form textarea {
@@ -147,9 +160,9 @@ form input, form textarea {
 
 .header span {
     color: white;
-    margin-right: 20px;
 }
 
 .header button {
-    margin: 0;
+    margin: 0 0 0 25px;
+    width: 150px;
 }

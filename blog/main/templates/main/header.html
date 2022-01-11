@@ -2,9 +2,14 @@
 <div class="header">
     {% if user.is_authenticated %}
         <span> Hi {{ user.username }}!</span>
-        <button class="btn btn-warning login-form" data-link="{% url 'logout' %}">Press to LogOut</button>
+        <button class="btn btn-warning login-form" data-link="{% url 'logout' %}" onclick="location = this.dataset.link">Press to LogOut</button>
     {% else %}
         <span>You are not logged in</span>
-        <button class="btn btn-primary login-form" data-link="{% url 'login' %}">Press to LogIn</button>
+        {% if 'login' in request.get_full_path %}
+            <button class="btn btn-success login-form" data-link="{% url 'register' %}" onclick="location = this.dataset.link">Press to Register</button>
+        {% endif %}
+        {% if 'register' in request.get_full_path %}
+            <button class="btn btn-outline-primary login-form" data-link="{% url 'login' %}" onclick="location = this.dataset.link">Press to LogIn</button>
+        {% endif %}
     {% endif %}
 </div>
