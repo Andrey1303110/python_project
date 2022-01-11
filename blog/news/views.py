@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from .models import Articles
 from .forms import ArticlesForm
@@ -5,11 +6,16 @@ from django.views.generic import DetailView, UpdateView, DeleteView
 
 
 def news_home(request):
-    data = {
-        'title': 'News page',
-        'news': Articles.objects.order_by('-date')
-    }
-    return render(request, 'news/news_home.html', data)
+    if request.user.is_authenticated:
+        data = {
+            'title': 'News page',
+            'news': Articles.objects.order_by('-date')
+        }
+        return render(request, 'news/news_home.html', data)
+
+    else:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+
 
 
 class NewsDetailView(DetailView):
