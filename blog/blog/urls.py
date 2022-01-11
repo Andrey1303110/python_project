@@ -10,10 +10,8 @@ urlpatterns = [
     path('', include('main.urls')),
     path('news/', include('news.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('register', views.register, name='register'),
-    path('register/', views.register, name='register'),
-    path('login', views.login, name='login'),
-    path('login/', views.login, name='login'),
+    path(r'register', views.register, name='register'),
+    path(r'login', views.login, name='login'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
