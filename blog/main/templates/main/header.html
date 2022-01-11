@@ -11,5 +11,9 @@
         {% if 'register' in request.get_full_path %}
             <button class="btn btn-outline-primary login-form" data-link="{% url 'login' %}" onclick="location = this.dataset.link">Press to LogIn</button>
         {% endif %}
+        {% if not 'register' in request.get_full_path and not 'login' in request.get_full_path %}
+            <button class="btn btn-success login-form" data-link="{% url 'register' %}" onclick="location = this.dataset.link">Press to Register</button>
+            <button class="btn btn-outline-primary login-form" data-link="{% url 'login' %}" onclick="location = this.dataset.link">Press to LogIn</button>
+        {% endif %}
     {% endif %}
 </div>
