@@ -167,3 +167,7 @@ form input, form textarea {
     margin: 0 0 0 25px;
     width: 150px;
 }
+
+.asteriskField {
+    display: none;
+}
