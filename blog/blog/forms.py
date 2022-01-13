@@ -21,7 +21,8 @@ class UserRegisterForm(UserCreationForm):
             attrs={
                 'class': 'form-control'
             }
-    ))
+        )
+    )
     email = forms.EmailField()
     password1 = forms.CharField(
         label='Пароль',
