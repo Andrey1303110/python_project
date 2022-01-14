@@ -15,7 +15,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ('email', 'fio', 'telegram', 'money', 'companys')
+        fields = ('email', 'fio', 'telegram', 'money', 'companys', 'account_type')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -43,7 +43,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ('email', 'password', 'fio', 'telegram', 'money', 'companys', 'is_active', 'is_admin')
+        fields = ('email', 'password', 'fio', 'telegram', 'money', 'companys', 'account_type', 'is_active', 'is_admin')
 
 
 class UserAdmin(BaseUserAdmin):
@@ -54,18 +54,18 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'fio', 'telegram', 'money', 'companys', 'is_admin')
-    list_filter = ('is_admin',)
+    list_display = ('email', 'fio', 'telegram', 'money', 'companys', 'account_type', 'is_admin')
+    list_filter = ('is_admin', 'account_type')
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('fio', 'telegram', 'money', 'companys')}),
+        ('Personal info', {'fields': ('fio', 'telegram', 'money', 'companys', 'account_type')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'fio', 'telegram', 'money', 'companys', 'password1', 'password2'),
+            'fields': ('email', 'fio', 'telegram', 'money', 'companys', 'account_type', 'password1', 'password2'),
         }),
     )
     search_fields = ('email',)

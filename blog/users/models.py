@@ -1,9 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
+ACCOUNT_TYPE = [
+    ('1', 'Base'),
+    ('2', 'Expert'),
+    ('3', 'Pro'),
+]
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, fio, telegram, money, companys, password=None):
+
+    def create_user(self, email, fio, telegram, money, companys, password=None, account_type=ACCOUNT_TYPE[0]):
         if not email:
             raise ValueError('Users must have an email address')
 
@@ -12,21 +18,23 @@ class MyUserManager(BaseUserManager):
             fio=fio,
             telegram=telegram,
             money=money,
-            companys=companys
+            companys=companys,
+            accout_type=account_type
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None):
+    def create_superuser(self, email, password=None, account_type=ACCOUNT_TYPE[2]):
         user = self.create_user(
             email,
             password=password,
             fio='admin',
             telegram='admin',
             companys=0,
-            money=0
+            money=0,
+            account_type=account_type
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -41,6 +49,7 @@ class MyUser(AbstractBaseUser):
     companys = models.IntegerField('Кампаний', default=0, blank=False)
     is_active = models.BooleanField(default=True, blank=False)
     is_admin = models.BooleanField(default=False, blank=False)
+    account_type = models.CharField(choices=ACCOUNT_TYPE, max_length=10, default='1', verbose_name='Тип аккаунта')
 
     objects = MyUserManager()
 
