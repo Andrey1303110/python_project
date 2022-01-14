@@ -1,7 +1,7 @@
 {% load static %}
 <div class="header">
     {% if user.is_authenticated %}
-        <span> Hi {{ user.username }}!</span>
+        <span> Hi {{ user.email }}!</span>
         <button class="btn btn-warning login-form" data-link="{% url 'logout' %}" onclick="location = this.dataset.link">Press to LogOut</button>
     {% else %}
         <span>You are not logged in</span>
