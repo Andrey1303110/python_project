@@ -1,5 +1,6 @@
 from django import forms
-from .models import MyUserManager, MyUser
+from .models import MyUser
+from django.forms import ModelForm
 
 
 class LoginForm(forms.Form):
@@ -12,8 +13,8 @@ class LoginForm(forms.Form):
     )
 
 
-class UserRegisterForm(MyUserManager):
-    username = forms.EmailField(
+class UserRegisterForm(ModelForm):
+    email = forms.EmailField(
         label='Email',
         help_text='Не более 150 символов',
         widget=forms.EmailInput(
@@ -63,4 +64,4 @@ class UserRegisterForm(MyUserManager):
 
     class Meta:
         model = MyUser
-        fields = ('username', 'fio', 'telegram', 'password1', 'password2')
+        fields = ('email', 'fio', 'telegram', 'password1', 'password2')
