@@ -53,7 +53,9 @@ def create(request):
     if request.method == 'POST':
         form = ArticlesForm(request.POST)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
             return redirect('news_home')
         else:
             error = 'Форма заполнена неверно'
