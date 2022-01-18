@@ -17,7 +17,6 @@ def news_home(request):
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
 
 
-
 class NewsDetailView(DetailView):
     model = Articles
     template_name = 'news/news_detail.html'

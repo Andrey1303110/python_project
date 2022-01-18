@@ -9,6 +9,7 @@
             {% for new in news %}
                 <div class="alert alert-warning">
                     <h3>{{new.title}}</h3>
+                    <p>{{new.author}}</p>
                     <p>{{new.anons}}</p>
                     <img src="../{{new.image}}" alt="">
                     <p>{{new.full_text}}</p>

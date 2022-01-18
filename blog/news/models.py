@@ -7,6 +7,7 @@ class Articles(models.Model):
     image = models.ImageField(upload_to='images', verbose_name='Изображение', default=None)
     full_text = models.TextField('Статья')
     date = models.DateTimeField('Дата публикации')
+    author = models.CharField('Автор', max_length=50, default='admin@mail.ru')
 
     def __str__(self):
         return self.title
@@ -17,4 +18,3 @@ class Articles(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-

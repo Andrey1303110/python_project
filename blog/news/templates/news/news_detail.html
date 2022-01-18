@@ -8,6 +8,7 @@
         <p>{{ article.date }}</p>
         <img src="../{{ article.image }}" alt="">
         <p>{{ article.full_text }}</p>
+        <p>{{ article.author }}</p>
         <a href="{% url 'news_update' article.id %}" class="btn btn-warning">Редактировать</a>
         <a href="{% url 'news_delete' article.id %}" class="btn btn-danger">Удалить</a>
     </div>
