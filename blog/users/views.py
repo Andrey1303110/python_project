@@ -54,3 +54,11 @@ def register(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+def my_profile(request):
+    data = {
+        'title': 'My profile',
+        'ACCOUNT_TYPE': ['', 'Base', 'Expert', 'Pro']
+    }
+    return render(request, 'main/profile.html', data)
