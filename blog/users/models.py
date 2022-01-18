@@ -7,6 +7,7 @@ ACCOUNT_TYPE = [
     ('3', 'Pro'),
 ]
 
+
 class MyUserManager(BaseUserManager):
 
     def create_user(self, email, fio, telegram, money, companys, password=None, account_type=ACCOUNT_TYPE[0]):

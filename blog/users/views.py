@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, UserRegisterForm
 from django.contrib import messages
+from .models import ACCOUNT_TYPE
 
 
 def login_user(request):
@@ -59,6 +60,5 @@ def logout_user(request):
 def my_profile(request):
     data = {
         'title': 'My profile',
-        'ACCOUNT_TYPE': ['', 'Base', 'Expert', 'Pro']
     }
     return render(request, 'main/profile.html', data)

@@ -28,9 +28,13 @@
             </div>
             <div class="block">
                 <p>Тип аккаунта</p>
-                <p>{{ user.account_type }}</p>
+                <p>{{ user.get_account_type_display }}</p>
             </div>
-            <div class="block is_admin">{{ user.is_admin }}</div>
+            {% if user.is_admin %}
+                <div class="block is_admin">Роль: Admin</div>
+            {% else %}
+                <div class="block">Роль: User</div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
