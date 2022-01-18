@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from .forms import LoginForm, UserRegisterForm
 from django.contrib import messages
-from .models import ACCOUNT_TYPE
+from .models import MyUser
 
 
 def login_user(request):
@@ -62,3 +62,11 @@ def my_profile(request):
         'title': 'My profile',
     }
     return render(request, 'main/profile.html', data)
+
+
+def chat(request):
+    users_list = MyUser.objects.all()
+    data = {
+        'users_list': users_list,
+    }
+    return render(request, 'chat/main.html', data)

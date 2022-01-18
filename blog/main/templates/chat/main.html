@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% load static %}
+{% block content %}
+    <div class="features zero_padding">
+        <div class="all_chat">
+            <div class="all_dialogs">
+                {% for users in users_list %}
+                    <div class="dialog">
+                        <img src="../{{users.avatar}}" alt="">
+                        <p>{{ users.email }}</p>
+                        <p>{{ users.fio }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

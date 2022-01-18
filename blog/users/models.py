@@ -51,6 +51,7 @@ class MyUser(AbstractBaseUser):
     is_active = models.BooleanField(default=True, blank=False)
     is_admin = models.BooleanField(default=False, blank=False)
     account_type = models.CharField(choices=ACCOUNT_TYPE, max_length=10, default='1', verbose_name='Тип аккаунта')
+    avatar = models.ImageField('Аватар', upload_to='images/', default='static/main/img/stock_avatar.png', null=True)
 
     objects = MyUserManager()
 

@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -9,6 +9,7 @@ urlpatterns = [
     path(r'login', views.login_user, name='login'),
     path(r'logout', views.logout_user, name='logout'),
     path('profile', views.my_profile, name='profile'),
+    path('chat', views.chat, name='chat'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
