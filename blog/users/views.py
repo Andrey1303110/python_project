@@ -1,8 +1,9 @@
+import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from .forms import LoginForm, UserRegisterForm, MessageForm
 from django.contrib import messages
-from .models import MyUser
+from .models import MyUser, Message
 
 
 def login_user(request):
@@ -69,5 +70,17 @@ def chat(request):
     data = {
         'users_list': users_list,
         'form': MessageForm(),
+        'messages': Message.objects.order_by('-time')
     }
+
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.from_message = request.user
+            instance.time = datetime.datetime.now()
+            instance.save()
+            return redirect('chat')
+
     return render(request, 'chat/main.html', data)
+

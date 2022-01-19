@@ -16,11 +16,22 @@
                     </div>
                 {% endfor %}
             </div>
-            <form class="chat_form" method="post">
+            <div class="chats">
+                <form class="chat_form" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
             </form>
+                <div class="all_messages">
+                {% for message in messages %}
+                    <div class="message">
+                        <p>{{ message.to_message }}</p>
+                        <p>{{ message.text_message }}</p>
+                        <p>{{ message.time }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            </div>
         </div>
     </div>
 {% endblock %}

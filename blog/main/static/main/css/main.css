@@ -217,6 +217,9 @@ form input, form textarea {
     height: 100%;
     position: relative;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .all_dialogs {
@@ -274,7 +277,7 @@ form input, form textarea {
 }
 
 .features .chat_form {
-    width: 100%;
+    width: 850px;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -282,7 +285,7 @@ form input, form textarea {
 }
 
 .features .chat_form div input {
-    width: 500px;
+    width: 350px;
 }
 
 .features .chat_form button[type='submit'] {
@@ -306,4 +309,26 @@ form input, form textarea {
 
 .features .chat_form button[type='submit'] i:active {
    transform: scale(.8) rotateZ(50deg);
+}
+
+.chats .message {
+    display: flex;
+}
+
+.chats .message p {
+    max-width: 400px;
+    margin: 20px 0;
+    width: 33%;
+}
+
+.chats .message p:first-child {
+    text-align: start;
+}
+
+.chats .message p:last-child {
+    text-align: end;
+}
+
+.all_messages {
+    padding-right: 25px;
 }

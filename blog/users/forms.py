@@ -1,5 +1,5 @@
 from django import forms
-from .models import MyUser
+from .models import MyUser, Message
 from django.forms import ModelForm
 
 
@@ -67,8 +67,17 @@ class UserRegisterForm(ModelForm):
         fields = ('email', 'fio', 'telegram', 'password1', 'password2')
 
 
-class MessageForm(forms.Form):
-    text = forms.CharField(
+class MessageForm(forms.ModelForm):
+    to_message = forms.EmailField(
+        label='',
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите получателя'
+            }
+        )
+    )
+    text_message = forms.CharField(
         label='',
         widget=forms.TextInput(
             attrs={
@@ -77,3 +86,7 @@ class MessageForm(forms.Form):
             }
         )
     )
+
+    class Meta:
+        model = Message
+        fields = ('to_message', 'text_message')
