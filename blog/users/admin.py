@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
-from .models import MyUser
+from .models import MyUser, Message
 
 
 class UserCreationForm(forms.ModelForm):
@@ -75,6 +75,13 @@ class UserAdmin(BaseUserAdmin):
 
 # Now register the new UserAdmin...
 admin.site.register(MyUser, UserAdmin)
+
+
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('text_message', 'from_message', 'to_message', 'time')
+
+
+admin.site.register(Message, MessageAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
