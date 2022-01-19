@@ -65,3 +65,15 @@ class UserRegisterForm(ModelForm):
     class Meta:
         model = MyUser
         fields = ('email', 'fio', 'telegram', 'password1', 'password2')
+
+
+class MessageForm(forms.Form):
+    text = forms.CharField(
+        label='',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Ваше соообщение'
+            }
+        )
+    )

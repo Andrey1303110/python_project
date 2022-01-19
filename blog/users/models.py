@@ -76,3 +76,13 @@ class MyUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+
+class Message(models.Model):
+    text_message = models.CharField('Текст', max_length=500, default='', blank=False)
+    from_message = models.EmailField('Отправитель', default='', blank=False)
+    to_message = models.EmailField('Получатель', default='', blank=False)
+    time = models.DateTimeField('Время отправки')
+
+    def __str__(self):
+        return self.text_message

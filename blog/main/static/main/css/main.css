@@ -215,6 +215,8 @@ form input, form textarea {
 .all_chat {
     width: 100%;
     height: 100%;
+    position: relative;
+    display: flex;
 }
 
 .all_dialogs {
@@ -269,4 +271,39 @@ form input, form textarea {
     text-align: start;
     font-size: 13px;
     transition: width 1s ease-in-out;
+}
+
+.features .chat_form {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.features .chat_form div input {
+    width: 500px;
+}
+
+.features .chat_form button[type='submit'] {
+    height: 40px;
+    width: 40px;
+    padding: 0.375rem;
+    background: none;
+    border: none;
+}
+
+.features .chat_form button[type='submit'] i {
+    color: white;
+    font-size: 25px;
+    margin-left: 10px;
+    transition: .35s ease-in-out;
+}
+
+.features .chat_form button[type='submit'] i:hover {
+   transform: rotateZ(50deg);
+}
+
+.features .chat_form button[type='submit'] i:active {
+   transform: scale(.8) rotateZ(50deg);
 }
