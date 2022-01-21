@@ -1,0 +1,40 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="features">
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Название</th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for offer in confirmed_offers %}
+                    <tr class="offer">
+                        <td></td>
+                        <td class="title_offer">{{ offer.offer_title }}</td>
+                        <td>{{ offer.time }}</td>
+                        <td>
+                            <form class="buy_form" method="post">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button type="submit">Добавить</i></button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'main/js/offers.js' %}"></script>
+{% endblock %}

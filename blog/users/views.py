@@ -112,3 +112,25 @@ def all_offers(request):
 
     return render(request, 'chat/offers.html', data)
 
+
+def my_offers(request):
+    user = request.user
+    offers_list = Offer.objects.order_by('price');
+    confirmed_offers = UserOffers.objects.filter(offer_owner=user)
+    data = {
+        'all_offers': offers_list,
+        'confirmed_offers': confirmed_offers,
+        'form': OfferBuyForm(),
+    }
+
+    if request.method == 'POST':
+        form = OfferBuyForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.offer_owner = request.user
+            instance.time = datetime.datetime.now()
+            instance.save()
+            return redirect('offers')
+
+    return render(request, 'chat/my_offers.html', data)
+

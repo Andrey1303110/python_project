@@ -9,6 +9,7 @@
         <a href="{% url 'profile' %}"><li><i class="fa fa-user" aria-hidden="true"></i> My Profile</li></a>
         <a href="{% url 'chat' %}"><li><i class="fa fa-comment" aria-hidden="true"></i> Chat</li></a>
         <a href="{% url 'all_offers' %}"><li><i class="fas fa-luggage-cart"></i> Offers</li></a>
+        <a href="{% url 'my_offers' %}"><li><i class="far fa-clipboard"></i> My Offers</li></a>
         {% if user.is_authenticated %}
             <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fa fa-plus-circle"></i> Add news</button></li></a>
         {% endif %}
