@@ -21,13 +21,13 @@
             <tbody>
                 {% for offer in all_offers %}
                     <tr class="offer">
-                        <td></td>
+                        <td class="id"></td>
                         <td class="title_offer">{{ offer.title }}</td>
-                        <td>{{ offer.description }}</td>
-                        <td>{{ offer.price }}</td>
-                        <td>{{ offer.profit }}</td>
-                        <td><img src="../{{ offer.image }}" alt=""></td>
-                        <td>
+                        <td class="description">{{ offer.description }}</td>
+                        <td class="prices">{{ offer.price }}</td>
+                        <td class="prices">{{ offer.profit }}</td>
+                        <td class="image"><img src="../{{ offer.image }}" alt=""></td>
+                        <td class="action">
                             <form class="buy_form" method="post">
                                 {% csrf_token %}
                                 {{ form|crispy }}

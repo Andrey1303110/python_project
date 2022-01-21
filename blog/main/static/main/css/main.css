@@ -372,27 +372,24 @@ td {
     vertical-align: top;
 }
 
-td:nth-child(3) {
-    text-align: justify;
-}
-
-th:nth-child(1) {
+td.id {
     width: 70px;
 }
 
-th:nth-child(3) {
+td.description {
     width: 350px;
+    text-align: justify;
 }
 
-th:nth-child(4), th:nth-child(5) {
+td.prices {
     width: 85px;
 }
 
-td:nth-child(6), td:nth-child(7) {
+td.action, td.image {
     vertical-align: middle;
 }
 
-tr img:last-child {
+td.image img {
     width: 200px;
     object-fit: cover;
 }
