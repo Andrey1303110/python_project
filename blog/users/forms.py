@@ -1,5 +1,5 @@
 from django import forms
-from .models import MyUser, Message
+from .models import MyUser, Message, UserOffers
 from django.forms import ModelForm
 
 
@@ -90,3 +90,14 @@ class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
         fields = ('to_message', 'text_message')
+
+
+class OfferBuyForm(forms.ModelForm):
+    offer_title = forms.TextInput(
+        label='',
+        widget=forms.HiddenInput()
+    )
+
+    class Meta:
+        model = UserOffers
+        fields = ('offer_title',)

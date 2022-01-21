@@ -1,9 +1,10 @@
 import datetime
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from .forms import LoginForm, UserRegisterForm, MessageForm
+from .forms import LoginForm, UserRegisterForm, MessageForm, OfferBuyForm
 from django.contrib import messages
-from .models import MyUser, Message
+from .models import MyUser, Message, Offer, UserOffers
 
 
 def login_user(request):
@@ -67,10 +68,15 @@ def my_profile(request):
 
 def chat(request):
     users_list = MyUser.objects.all()
+    user = request.user
+    messages = Message.objects.filter(
+            Q(from_message=user) |
+            Q(to_message=user)
+        ).order_by('-time')
     data = {
         'users_list': users_list,
         'form': MessageForm(),
-        'messages': Message.objects.order_by('-time')
+        'messages': messages
     }
 
     if request.method == 'POST':
@@ -83,4 +89,26 @@ def chat(request):
             return redirect('chat')
 
     return render(request, 'chat/main.html', data)
+
+
+def all_offers(request):
+    user = request.user
+    offers_list = Offer.objects.all()
+    confirmed_offers = UserOffers.objects.filter(offer_owner=user)
+    data = {
+        'all_offers': offers_list,
+        'confirmed_offers': confirmed_offers,
+        'form': OfferBuyForm(),
+    }
+
+    if request.method == 'POST':
+        form = OfferBuyForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.offer_owner = request.user
+            instance.time = datetime.datetime.now()
+            instance.save()
+            return redirect('offers')
+
+    return render(request, 'chat/offers.html', data)
 

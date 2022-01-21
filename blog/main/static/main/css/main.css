@@ -242,6 +242,10 @@ form input, form textarea {
     font-size: 17px;
 }
 
+.chats {
+    width: 56vw;
+}
+
 .dialog {
     display: flex;
     flex-direction: column;
@@ -312,22 +316,57 @@ form input, form textarea {
 
 .chats .message {
     display: flex;
+    justify-content: space-between;
 }
 
 .chats .message p {
-    max-width: 400px;
     margin: 20px 0;
-    width: 33%;
+    max-width: unset;
 }
 
 .chats .message p:first-child {
+    width: max-content;
     text-align: start;
+    margin-left: 35px;
+}
+
+.chats .message:before {
+    display: block;
+    width: 30px;
+    height: 35px;
+    position: relative;
+    top: 17px;
+    left: 20px;
+    content: '';
+    background-size: cover;
+}
+
+.chats .message.received:before {
+    background-image: url("/static/main/img/in.png");
+}
+
+.chats .message.sent:before {
+    background-image: url("/static/main/img/out.png");
+}
+
+.chats .message p:nth-child(2) {
+    width: 100%;
+    text-align: center;
 }
 
 .chats .message p:last-child {
+    width: 200px;
     text-align: end;
 }
 
 .all_messages {
     padding-right: 25px;
+}
+
+th:nth-child(3) {
+    width: 25%;
+}
+
+tr img:last-child {
+    width: 150px;
 }

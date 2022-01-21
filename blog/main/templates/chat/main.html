@@ -18,20 +18,32 @@
             </div>
             <div class="chats">
                 <form class="chat_form" method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-            </form>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </form>
                 <div class="all_messages">
                 {% for message in messages %}
-                    <div class="message">
-                        <p>{{ message.to_message }}</p>
-                        <p>{{ message.text_message }}</p>
-                        <p>{{ message.time }}</p>
-                    </div>
+                    {% if message.to_message != user.email %}
+                        <div class="message sent">
+                            <p>{{ message.to_message }}</p>
+                            <p>{{ message.text_message }}</p>
+                            <p>{{ message.time }}</p>
+                        </div>
+                    {% else %}
+                        <div class="message received">
+                            <p>{{ message.from_message }}</p>
+                            <p>{{ message.text_message }}</p>
+                            <p>{{ message.time }}</p>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'main/js/chat.js' %}"></script>
 {% endblock %}

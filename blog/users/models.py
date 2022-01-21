@@ -62,27 +62,41 @@ class MyUser(AbstractBaseUser):
         return self.email
 
     def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
         return True
 
     def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
         return True
 
     @property
     def is_staff(self):
-        "Is the user a member of staff?"
-        # Simplest possible answer: All admins are staff
         return self.is_admin
 
 
 class Message(models.Model):
     text_message = models.CharField('Текст', max_length=500, default='', blank=False)
-    from_message = models.EmailField('Отправитель', default='', blank=False)
+    from_message = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     to_message = models.EmailField('Получатель', default='', blank=False)
     time = models.DateTimeField('Время отправки')
 
     def __str__(self):
         return self.text_message
+
+
+class Offer(models.Model):
+    title = models.CharField('Название', max_length=200, default='', blank=False)
+    description = models.CharField('Описание', max_length=1000, default='', blank=False)
+    price = models.IntegerField('Цена', default='', blank=False)
+    profit = models.IntegerField('Профит', default='', blank=False)
+    image = models.ImageField('Изображение', upload_to='images/', default='static/main/img/offer_default.png', null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class UserOffers(models.Model):
+    offer_owner = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="email_user")
+    offer_title = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name="title_offer")
+    time = models.DateTimeField('Время добавления')
+
+    def __str__(self):
+        return str(self.offer_owner)

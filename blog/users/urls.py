@@ -10,6 +10,7 @@ urlpatterns = [
     path(r'logout', views.logout_user, name='logout'),
     path('profile', views.my_profile, name='profile'),
     path('chat', views.chat, name='chat'),
+    path('all_offers', views.all_offers, name='all_offers'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
