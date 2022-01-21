@@ -93,7 +93,7 @@ class MessageForm(forms.ModelForm):
 
 
 class OfferBuyForm(forms.ModelForm):
-    offer_title = forms.TextInput(
+    offer_title = forms.CharField(
         label='',
         widget=forms.HiddenInput()
     )

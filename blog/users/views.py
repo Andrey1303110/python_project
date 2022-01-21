@@ -93,7 +93,7 @@ def chat(request):
 
 def all_offers(request):
     user = request.user
-    offers_list = Offer.objects.all()
+    offers_list = Offer.objects.order_by('price');
     confirmed_offers = UserOffers.objects.filter(offer_owner=user)
     data = {
         'all_offers': offers_list,

@@ -363,10 +363,44 @@ form input, form textarea {
     padding-right: 25px;
 }
 
+table {
+    width: 100%;
+}
+
+td {
+    padding: 20px 5px;
+    vertical-align: top;
+}
+
+td:nth-child(3) {
+    text-align: justify;
+}
+
+th:nth-child(1) {
+    width: 70px;
+}
+
 th:nth-child(3) {
-    width: 25%;
+    width: 350px;
+}
+
+th:nth-child(4), th:nth-child(5) {
+    width: 85px;
+}
+
+td:nth-child(6), td:nth-child(7) {
+    vertical-align: middle;
 }
 
 tr img:last-child {
-    width: 150px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.features table form {
+    width: unset;
+}
+
+table form button[type='submit'] {
+    width: 140px;
 }

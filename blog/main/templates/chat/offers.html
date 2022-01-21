@@ -20,9 +20,9 @@
             </thead>
             <tbody>
                 {% for offer in all_offers %}
-                    <tr>
-                        <td>{{ offer.id }}</td>
-                        <td>{{ offer.title }}</td>
+                    <tr class="offer">
+                        <td></td>
+                        <td class="title_offer">{{ offer.title }}</td>
                         <td>{{ offer.description }}</td>
                         <td>{{ offer.price }}</td>
                         <td>{{ offer.profit }}</td>
@@ -31,7 +31,7 @@
                             <form class="buy_form" method="post">
                                 {% csrf_token %}
                                 {{ form|crispy }}
-                                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                <button type="submit">Добавить</i></button>
                             </form>
                         </td>
                     </tr>
@@ -42,5 +42,5 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'main/js/chat.js' %}"></script>
+    <script src="{% static 'main/js/offers.js' %}"></script>
 {% endblock %}
