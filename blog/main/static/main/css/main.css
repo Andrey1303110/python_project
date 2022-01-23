@@ -395,6 +395,7 @@ td.image img {
 }
 
 .features table form {
+    margin-top: 0;
     width: unset;
 }
 
