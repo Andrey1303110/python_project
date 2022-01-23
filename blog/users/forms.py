@@ -1,16 +1,30 @@
 from django import forms
 from .models import MyUser, Message, UserOffers
 from django.forms import ModelForm
+from django.contrib.auth.hashers import check_password
 
 
-class LoginForm(forms.Form):
-    username = forms.EmailField(
-        label='Email'
-    )
-    password = forms.CharField(
-        label='Пароль',
-        widget=forms.PasswordInput
-    )
+class LoginForm(ModelForm):
+    class Meta:
+        model = MyUser
+        fields = ['email', 'password']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password'].widget=forms.PasswordInput()
+
+    def clean(self):
+        cleaned_data = super(LoginForm, self).clean()
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+        user = MyUser.objects.filter(email=email).first()
+        if user is None:
+            self._errors['email'] = ['Пользователя не существует']
+        elif not check_password(password, user.password):
+            self._errors['email'] = []
+            self._errors['password'] = ['Неправильный пароль']
+
+        return cleaned_data
 
 
 class UserRegisterForm(ModelForm):
@@ -68,15 +82,6 @@ class UserRegisterForm(ModelForm):
 
 
 class MessageForm(forms.ModelForm):
-    to_message = forms.EmailField(
-        label='',
-        widget=forms.EmailInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите получателя'
-            }
-        )
-    )
     text_message = forms.CharField(
         label='',
         widget=forms.TextInput(
