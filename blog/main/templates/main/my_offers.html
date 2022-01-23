@@ -18,9 +18,9 @@
             <tbody>
                 {% for offer in confirmed_offers %}
                     <tr class="offer">
-                        <td></td>
-                        <td class="title_offer">{{ offer.offer_title }}</td>
-                        <td>{{ offer.time }}</td>
+                        <td>{{ offer.id }}</td>
+                        <td class="title_offer">{{ offer.inst.offer_title }}</td>
+                        <td>{{ offer.inst.time }}</td>
                         <td class="action">
                             <form class="buy_form" method="post">
                                 {% csrf_token %}

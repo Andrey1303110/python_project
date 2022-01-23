@@ -21,16 +21,16 @@
             <tbody>
                 {% for offer in all_offers %}
                     <tr class="offer">
-                        <td class="id"></td>
-                        <td class="title_offer">{{ offer.title }}</td>
-                        <td class="description">{{ offer.description }}</td>
-                        <td class="prices">{{ offer.price }}</td>
-                        <td class="prices">{{ offer.profit }}</td>
-                        <td class="image"><img src="../{{ offer.image }}" alt=""></td>
+                        <td class="id">{{ offer.id }}</td>
+                        <td class="title_offer">{{ offer.inst.title }}</td>
+                        <td class="description">{{ offer.inst.description }}</td>
+                        <td class="prices">{{ offer.inst.price }}</td>
+                        <td class="prices">{{ offer.inst.profit }}</td>
+                        <td class="image"><img src="../{{ offer.inst.image }}" alt=""></td>
                         <td class="action">
                             <form class="buy_form" method="post">
                                 {% csrf_token %}
-                                {{ form|crispy }}
+                                <input type="hidden" name="offer_pk" value="{{ offer.inst.pk }}">
                                 <button type="submit">Добавить</i></button>
                             </form>
                         </td>
