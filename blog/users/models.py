@@ -85,6 +85,10 @@ class Message(models.Model):
     def __str__(self):
         return self.text_message
 
+    class Meta:
+        verbose_name = 'Сообщение'
+        verbose_name_plural = 'Сообщения'
+
 
 class Offer(models.Model):
     title = models.CharField('Название', max_length=200, default='', blank=False)
@@ -96,6 +100,10 @@ class Offer(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Оффер'
+        verbose_name_plural = 'Офферы'
+
 
 class UserOffers(models.Model):
     offer_owner = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="email_user")
@@ -104,3 +112,7 @@ class UserOffers(models.Model):
 
     def __str__(self):
         return str(self.offer_owner)
+
+    class Meta:
+        verbose_name = 'Пользовательский оффер'
+        verbose_name_plural = 'Пользовательские офферы'
