@@ -5,12 +5,10 @@
 {% block content %}
 <div class="features" xmlns="http://www.w3.org/1999/html">
         <h1>{{ title }}</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form.title}}
-            {{form.anons}}
-            {{form.full_text}}
-            {{form.date}}
+            {% load crispy_forms_tags %}
+            {{ form | crispy }}
             <span>{{ error }}</span>
             <button class="btn btn-success" type="submit">{{ button_text }}</button>
         </form>
