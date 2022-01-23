@@ -58,6 +58,10 @@ class MyUser(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['fio', 'telegram']
 
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+
     def __str__(self):
         return self.email
 
@@ -74,8 +78,8 @@ class MyUser(AbstractBaseUser):
 
 class Message(models.Model):
     text_message = models.CharField('Текст', max_length=500, default='', blank=False)
-    from_message = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    to_message = models.EmailField('Получатель', default='', blank=False)
+    from_message = models.ForeignKey('MyUser', blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='from_message')
+    to_message = models.ForeignKey('MyUser', blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='to_message')
     time = models.DateTimeField('Время отправки')
 
     def __str__(self):
