@@ -8,8 +8,8 @@
         <form method="post">
             {% csrf_token %}
             <span>{{ error }}</span>
-            <span>Вы действительно хотите удалить статью #{{ article.id }}</span>
-            <button class="btn btn-danger" type="submit">Удалить статью #{{ article.id }}</button>
+            <span>Вы действительно хотите удалить статью № {{ article.id }}</span>
+            <button class="btn btn-danger" type="submit">Удалить статью</button>
         </form>
     </div>
 {% endblock %}
