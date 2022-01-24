@@ -106,8 +106,8 @@ class Offer(models.Model):
 
 
 class UserOffers(models.Model):
-    offer_owner = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="email_user")
-    offer_title = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name="title_offer")
+    offer_owner = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="email_user", verbose_name='Пользователь')
+    offer_title = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name="title_offer", verbose_name='Название оффера')
     time = models.DateTimeField('Время добавления')
 
     def __str__(self):
