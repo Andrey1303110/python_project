@@ -31,7 +31,7 @@
                             <form class="buy_form" method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="offer_pk" value="{{ offer.inst.pk }}">
-                                <button type="submit">Добавить</i></button>
+                                <button class="btn btn-success" type="submit">Добавить</i></button>
                             </form>
                         </td>
                     </tr>
@@ -39,8 +39,4 @@
             </tbody>
         </table>
     </div>
-{% endblock %}
-
-{% block script %}
-    <script src="{% static 'main/js/offers.js' %}"></script>
 {% endblock %}
