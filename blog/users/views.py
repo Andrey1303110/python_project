@@ -93,44 +93,58 @@ def chat(request):
 
 def all_offers(request):
     user = request.user
-    offers_list = Offer.objects.order_by('price');
-    confirmed_offers = UserOffers.objects.filter(offer_owner=user)
+    offers = Offer.objects.order_by('price')
+    offers_list = []
+
+    for idx, offer in enumerate(offers):
+        offers_list.append(
+            {'id': idx + 1,
+             'inst': offer,
+             'conf': UserOffers.objects.filter(offer_title=offer, offer_owner=user)}
+        )
+
     data = {
         'all_offers': offers_list,
-        'confirmed_offers': confirmed_offers,
         'form': OfferBuyForm(),
     }
 
     if request.method == 'POST':
-        form = OfferBuyForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.offer_owner = request.user
-            instance.time = datetime.datetime.now()
-            instance.save()
-            return redirect('offers')
+        offer_id = int(request.POST.get('offer_id'))
+        offer = Offer.objects.get(pk=offer_id)
 
-    return render(request, 'chat/offers.html', data)
+        instance = UserOffers.objects.create(
+            time=datetime.datetime.now(),
+            offer_owner=request.user,
+            offer_title=offer
+        )
+        return redirect('my_offers')
+
+    return render(request, 'main/offers.html', data)
 
 
 def my_offers(request):
     user = request.user
-    offers_list = Offer.objects.order_by('price');
-    confirmed_offers = UserOffers.objects.filter(offer_owner=user)
+    confirmed_offers = []
+    offers = UserOffers.objects.filter(offer_owner=user).order_by('-time')
+
+    for idx, offer in enumerate(offers):
+        confirmed_offers.append(
+            {
+                'id': idx + 1,
+                'img': Offer.objects.get(title=offer.offer_title),
+                'inst': offer,
+            }
+        )
+
     data = {
-        'all_offers': offers_list,
         'confirmed_offers': confirmed_offers,
         'form': OfferBuyForm(),
     }
 
     if request.method == 'POST':
-        form = OfferBuyForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.offer_owner = request.user
-            instance.time = datetime.datetime.now()
-            instance.save()
-            return redirect('offers')
+        offer_id = int(request.POST.get('offer_id'))
+        UserOffers.objects.get(pk=offer_id).delete()
+        return redirect('my_offers')
 
-    return render(request, 'chat/my_offers.html', data)
+    return render(request, 'main/my_offers.html', data)
 
