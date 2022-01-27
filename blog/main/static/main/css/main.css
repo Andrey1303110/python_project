@@ -42,11 +42,23 @@ aside ul li {
     margin-top: 15px;
     font-size: 25px;
     text-decoration: none;
-    transition: transform ease-in-out .25s;
+    transition: transform ease-in-out .25s,
+                color .1s linear;
 }
 
 aside ul li i {
     margin-right: 10px;
+}
+
+aside ul a li.active {
+    color: #ff2525;
+    transform: scale(1.05);
+    transition: 0s;
+}
+
+aside ul a li.active:hover {
+    transform: none;
+    transform: scale(1.05);
 }
 
 aside ul a li:hover {
@@ -202,7 +214,7 @@ form input, form textarea {
     color: white;
 }
 
-.header button {
+.header a {
     margin: 0 0 0 25px;
     width: 150px;
 }
@@ -362,6 +374,10 @@ form input, form textarea {
     padding-right: 25px;
 }
 
+.features table img {
+    width: unset;
+}
+
 table {
     width: 100%;
 }
@@ -375,6 +391,11 @@ thead {
 
 table .title_offer {
     font-weight: bold;
+    text-align: left;
+}
+
+th.title_offer {
+    width: 230px;
 }
 
 tr.offer {
@@ -415,10 +436,10 @@ td.action, td.image {
     vertical-align: middle;
 }
 
-td.image img {
-    width: 200px;
+td img {
+    width: 125px;
     object-fit: contain;
-    height: 200px;
+    height: 125px;
 }
 
 .features table form {
