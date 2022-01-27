@@ -10,7 +10,7 @@
             <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название</th>
+                    <th class="title_offer">Название</th>
                     <th>Описание</th>
                     <th>Цена</th>
                     <th>Профит</th>
@@ -30,8 +30,12 @@
                         <td class="action">
                             <form class="buy_form" method="post">
                                 {% csrf_token %}
-                                <input type="hidden" name="offer_pk" value="{{ offer.inst.pk }}">
-                                <button class="btn btn-success" type="submit">Добавить</i></button>
+                                <input type="hidden" name="offer_id" value="{{ offer.inst.pk }}">
+                                {% if offer.conf %}
+                                    <button disabled class="btn btn-secondary" type="submit">Добавлено</i></button>
+                                {% else %}
+                                    <button class="btn btn-success" type="submit">Добавить</i></button>
+                                {% endif %}
                             </form>
                         </td>
                     </tr>
