@@ -2,18 +2,18 @@
 <div class="header">
     {% if user.is_authenticated %}
         <span> Hi {{ user.email }}!</span>
-        <button class="btn btn-warning login-form" data-link="{% url 'logout' %}" onclick="location = this.dataset.link">Press to LogOut</button>
+        <a class="btn btn-warning login-form" href="{% url 'logout' %}">Press to LogOut</a>
     {% else %}
         <span>You are not logged in</span>
         {% if 'login' in request.get_full_path %}
-            <button class="btn btn-success login-form" data-link="{% url 'register' %}" onclick="location = this.dataset.link">Press to Register</button>
+            <a class="btn btn-success login-form" href="{% url 'register' %}">Press to Register</a>
         {% endif %}
         {% if 'register' in request.get_full_path %}
-            <button class="btn btn-outline-primary login-form" data-link="{% url 'login' %}" onclick="location = this.dataset.link">Press to LogIn</button>
+            <a class="btn btn-outline-primary login-form" href="{% url 'login' %}">Press to LogIn</a>
         {% endif %}
         {% if not 'register' in request.get_full_path and not 'login' in request.get_full_path %}
-            <button class="btn btn-success login-form" data-link="{% url 'register' %}" onclick="location = this.dataset.link">Press to Register</button>
-            <button class="btn btn-outline-primary login-form" data-link="{% url 'login' %}" onclick="location = this.dataset.link">Press to LogIn</button>
+            <a class="btn btn-success login-form" href="{% url 'register' %}">Press to Register</a>
+            <a class="btn btn-outline-primary login-form" href="{% url 'login' %}">Press to LogIn</a>
         {% endif %}
     {% endif %}
 </div>
