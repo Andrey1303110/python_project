@@ -12,7 +12,10 @@
                     <th>№</th>
                     <th>Название</th>
                     <th>Изображение</th>
-                    <th>Дата</th>
+                    <th>Просмотры</th>
+                    <th>Продажи</th>
+                    <th>Профит</th>
+                    <th>Дата добавления</th>
                     <th>Действие</th>
                 </tr>
             </thead>
@@ -21,12 +24,15 @@
                     <tr class="offer my_offers">
                         <td>{{ offer.id }}</td>
                         <td class="title_offer">{{ offer.inst.offer_title }}</td>
-                        <td><img src="{{ offer.inst.image }}" alt=""></td>
+                        <td class="image"><img src="{{ offer.img.image }}" alt=""></td>
+                        <td>{{ offer.inst.offer_views }}</td>
+                        <td>{{ offer.inst.offer_sells }}</td>
+                        <td>{{ offer.inst.offer_profit }}</td>
                         <td>{{ offer.inst.time }}</td>
                         <td class="action">
                             <form class="buy_form" method="post">
                                 {% csrf_token %}
-                                <input type="hidden" name="offer_pk" value="{{ offer.inst.pk }}">
+                                <input type="hidden" name="offer_id" value="{{ offer.inst.pk }}">
                                 <button class="btn btn-danger" type="submit">Удалить</i></button>
                             </form>
                         </td>
