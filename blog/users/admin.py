@@ -92,7 +92,7 @@ admin.site.register(Offer, OfferAdmin)
 
 
 class UserOffersAdmin(admin.ModelAdmin):
-    list_display = ('offer_owner', 'offer_title', 'time')
+    list_display = ('offer_title', 'offer_owner', 'offer_views', 'offer_sells', 'offer_profit', 'time')
 
 
 admin.site.register(UserOffers, UserOffersAdmin)

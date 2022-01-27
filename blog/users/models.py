@@ -108,10 +108,13 @@ class Offer(models.Model):
 class UserOffers(models.Model):
     offer_owner = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="email_user", verbose_name='Пользователь')
     offer_title = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name="title_offer", verbose_name='Название оффера')
-    time = models.DateTimeField('Время добавления')
+    offer_views = models.IntegerField('Просмоторы', default=0, blank=False)
+    offer_sells = models.IntegerField('Продажи', default=0, blank=False)
+    offer_profit = models.IntegerField('Профит', default=0, blank=False)
+    time = models.DateTimeField('Время добавления', default=0, blank=False)
 
     def __str__(self):
-        return str(self.offer_owner)
+        return str(self.offer_title)
 
     class Meta:
         verbose_name = 'Пользовательский оффер'
