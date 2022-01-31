@@ -3,22 +3,23 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div class="features">
+        <div class="features">
         <h1>{{ title }}</h1>
         {% if news %}
-            {% for new in news %}
-                <div class="alert alert-warning">
-                    <h3>{{new.title}}</h3>
-                    <p>{{new.author}}</p>
-                    <p>{{new.anons}}</p>
-                    <img src="../{{new.image}}" alt="">
-                    <p>{{new.full_text}}</p>
-                    <p>{{new.date}}</p>
-                    <a href="{% url 'news_detail' new.id %}" class="btn btn-warning">Читать детальнее</a>
-                </div>
-            {% endfor %}
+            <div class="all_news">
+                {% for new in news %}
+                    <div class="alert alert-warning">
+                        <h3>{{new.title}}</h3>
+                        <p>{{new.author}}</p>
+                        <p>{{new.anons}}</p>
+                        <img src="../{{new.image}}" alt="">
+                        <p>{{new.full_text}}</p>
+                        <p>{{new.date}}</p>
+                        <a href="{% url 'news_detail' new.id %}" class="btn btn-warning">Читать детальнее</a>
+                    </div>
+                {% endfor %}
+            </div>
         {% else %}
             <p>У вас нет записей!</p>
         {% endif %}
-    </div>
 {% endblock %}

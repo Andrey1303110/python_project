@@ -32,7 +32,7 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="offer_id" value="{{ offer.inst.pk }}">
                                 {% if offer.conf %}
-                                    <button disabled class="btn btn-secondary" type="submit">Добавлено</i></button>
+                                    <button disabled class="btn btn-secondary" type="submit">Добавлен</i></button>
                                 {% else %}
                                     <button class="btn btn-success" type="submit">Добавить</i></button>
                                 {% endif %}

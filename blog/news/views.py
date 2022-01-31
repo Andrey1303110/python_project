@@ -33,6 +33,7 @@ class NewsUpdateView(UpdateView):
         data = super().get_context_data(**kwargs)
         data['title'] = 'Редактирование записи'
         data['button_text'] = 'Обновить запись'
+        data['script'] = 'main/js/update_news.js'
         return data
 
 
@@ -65,6 +66,7 @@ def create(request):
         'form': form,
         'error': error,
         'title': 'Форма по добавлению статьи',
-        'button_text': 'Добавить запись'
+        'button_text': 'Добавить запись',
+        'script': 'update_news.js'
     }
     return render(request, 'news/create.html', data)

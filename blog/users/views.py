@@ -1,10 +1,49 @@
 import datetime
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, UserRegisterForm, MessageForm, OfferBuyForm
 from django.contrib import messages
+from django.views.generic import TemplateView
 from .models import MyUser, Message, Offer, UserOffers
+
+
+class LoginPageView(TemplateView):
+    template_name = 'registration/login.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(LoginPageView, self).get_context_data(*args, **kwargs)
+        context['title'] = 'Login Page'
+        context['button_text'] = 'sign in'
+        form = LoginForm()
+
+        if self.request.method == 'POST':
+            form = LoginForm(self.request.POST)
+
+            if form.is_valid():
+                cleaned_data = form.cleaned_data
+                user = authenticate(
+                    username=cleaned_data['username'],
+                    password=cleaned_data['password'],
+                )
+                if user is not None:
+                    login(self.request, user)
+            print(form.errors)
+
+        context['form'] = form
+
+        return context
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('news_home')
+
+        return super(LoginPageView, self).get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('news_home')
+        return self.get(request, *args, **kwargs)
 
 
 def login_user(request):
@@ -16,6 +55,7 @@ def login_user(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
+            data['form'] = form
             cleaned_data = form.cleaned_data
             user = authenticate(
                 username=cleaned_data['username'],

@@ -96,8 +96,14 @@ main .features p {
     margin: 20px auto;
 }
 
-.features img {
-    width: 500px;
+.features .fullview {
+    width: 450px;
+}
+
+.features form .preview {
+    width: -webkit-fill-available;
+    object-fit: scale-down;
+    padding: 50px;
 }
 
 .features .flex {
@@ -106,7 +112,6 @@ main .features p {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 100%;
     max-width: 1300px;
 }
 
@@ -144,8 +149,12 @@ main .features p {
     clear: both;
     float: left;
     width: 400px;
-    margin: 20px 30%;
+    margin: 30px 0;
     text-align: justify;
+}
+
+.alert-warning .btn {
+    margin-bottom: 0;
 }
 
 aside .alert-warning {
@@ -214,6 +223,15 @@ form input, form textarea {
     color: white;
 }
 
+.header .avatar {
+    height: 38px;
+    width: 38px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    border: 2px solid #ffffffbd;
+    margin: 0 0 0 20px;
+}
+
 .header a {
     margin: 0 0 0 25px;
     width: 150px;
@@ -235,6 +253,7 @@ form input, form textarea {
 
 .all_dialogs {
     width: 325px;
+    min-height: 100vh;
     background: #273d3d;
     transition: width 1s ease-in-out;
 }
@@ -272,6 +291,7 @@ form input, form textarea {
 
 .dialog:hover {
     background: #268686;
+    transition: .8s ease-in-out;
 }
 
 .features .dialog img {
