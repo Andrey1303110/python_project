@@ -96,8 +96,14 @@ main .features p {
     margin: 20px auto;
 }
 
-.features img {
-    width: 500px;
+.features .fullview {
+    width: 450px;
+}
+
+.features form .preview {
+    width: -webkit-fill-available;
+    object-fit: scale-down;
+    padding: 50px;
 }
 
 .features .flex {
@@ -144,8 +150,12 @@ main .features p {
     clear: both;
     float: left;
     width: 400px;
-    margin: 20px 30%;
+    margin: 30px 0;
     text-align: justify;
+}
+
+.alert-warning .btn {
+    margin-bottom: 0;
 }
 
 aside .alert-warning {

@@ -6,7 +6,7 @@
     <div class="features">
         <h1>{{ article.title }}</h1>
         <p>{{ article.date }}</p>
-        <img src="../{{ article.image }}" alt="">
+        <img class="fullview" src="../{{ article.image }}" alt="">
         <p>{{ article.full_text }}</p>
         <p>{{ article.author }}</p>
         <a href="{% url 'news_update' article.id %}" class="btn btn-warning">Редактировать</a>
