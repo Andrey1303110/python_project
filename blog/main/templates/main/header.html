@@ -2,6 +2,7 @@
 <div class="header">
     {% if user.is_authenticated %}
         <span> Hi {{ user.email }}!</span>
+        <img class="avatar" src="../{{  user.avatar }}" alt="">
         <a class="btn btn-warning login-form" href="{% url 'logout' %}">Press to LogOut</a>
     {% else %}
         <span>You are not logged in</span>

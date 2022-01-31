@@ -224,6 +224,15 @@ form input, form textarea {
     color: white;
 }
 
+.header .avatar {
+    height: 38px;
+    width: 38px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    border: 2px solid #ffffffbd;
+    margin: 0 0 0 20px;
+}
+
 .header a {
     margin: 0 0 0 25px;
     width: 150px;
@@ -246,6 +255,7 @@ form input, form textarea {
 .all_dialogs {
     width: 325px;
     background: #273d3d;
+    min-height: 100vh;
     transition: width 1s ease-in-out;
 }
 
@@ -282,6 +292,7 @@ form input, form textarea {
 
 .dialog:hover {
     background: #268686;
+    transition: .8s ease-in-out;
 }
 
 .features .dialog img {
