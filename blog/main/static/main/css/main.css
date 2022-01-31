@@ -221,6 +221,7 @@ form input, form textarea {
 
 .header span {
     color: white;
+    width: fit-content;
 }
 
 .header .avatar {

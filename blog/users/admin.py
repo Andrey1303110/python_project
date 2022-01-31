@@ -85,7 +85,7 @@ admin.site.register(Message, MessageAdmin)
 
 
 class OfferAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'price', 'profit')
+    list_display = ('title', 'description', 'dropship_price', 'price', 'profit')
 
 
 admin.site.register(Offer, OfferAdmin)

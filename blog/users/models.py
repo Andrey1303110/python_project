@@ -93,8 +93,9 @@ class Message(models.Model):
 class Offer(models.Model):
     title = models.CharField('Название', max_length=200, default='', blank=False)
     description = models.CharField('Описание', max_length=1000, default='', blank=False)
-    price = models.IntegerField('Цена', default='', blank=False)
-    profit = models.IntegerField('Профит', default='', blank=False)
+    dropship_price = models.IntegerField('Цена для дропа', default=0, blank=False)
+    price = models.IntegerField('Цена', default=0, blank=False)
+    profit = models.IntegerField('Профит', default=0, blank=False)
     image = models.ImageField('Изображение', upload_to='images/', default='static/main/img/offer_default.png', null=True)
 
     def __str__(self):
